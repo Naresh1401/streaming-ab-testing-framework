@@ -1,0 +1,22 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="streaming-ab-testing-framework",
+    version="1.0.0",
+    description="Production-ready A/B testing framework for streaming platforms",
+    author="Experimentation Science Team",
+    python_requires=">=3.11",
+    packages=find_packages(),
+    install_requires=[
+        "numpy>=1.24,<2.0",
+        "pandas>=2.0,<3.0",
+        "scipy>=1.11,<2.0",
+        "statsmodels>=0.14,<1.0",
+        "pingouin>=0.5.3,<1.0",
+        "plotly>=5.15,<6.0",
+        "streamlit>=1.28,<2.0",
+    ],
+    extras_require={
+        "dev": ["pytest>=7.4,<9.0"],
+    },
+)
