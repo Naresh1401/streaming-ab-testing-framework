@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Shared checks from https://github.com/Naresh1401/github-cicd-workflows
+jobs:
+  python:
+    name: Python
+    uses: Naresh1401/github-cicd-workflows/.github/workflows/python-ci.yml@v1
+
+  repo-lint:
+    name: Repository lint
+    uses: Naresh1401/github-cicd-workflows/.github/workflows/repo-lint.yml@v1
